@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../screens/user_products_screen.dart';
 import '../screens/order_return_screen.dart';
+import '../screens/qr_code_screen.dart';
 
 class AppDrawer extends StatelessWidget {
   @override
@@ -42,8 +43,7 @@ class AppDrawer extends StatelessWidget {
             leading: const Icon(Icons.qr_code),
             title: const Text('Products QR_Code'),
             onTap: () {
-              // Navigator.of(context)
-              //     .pushReplacementNamed(UserProductsScreen.routeName);
+              Navigator.of(context).pushReplacementNamed(QrcodeScreen.routeName);
             },
           ),
           const Divider(),

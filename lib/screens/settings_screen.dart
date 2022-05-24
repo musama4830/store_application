@@ -5,12 +5,12 @@ import '../providers/products.dart';
 
 class SettingsScreen extends StatelessWidget {
   static const routeName = '/settings_screen';
-  TextEditingController limitController = TextEditingController();
+  TextEditingController _limitController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     void _saveForm() {
-      final check = int.parse(limitController.text);
+      final check = int.parse(_limitController.text);
       if (check <= 5) {
         showDialog(
           context: context,
@@ -68,7 +68,7 @@ class SettingsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextField(
-              controller: limitController,
+              controller: _limitController,
               autofocus: true,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),

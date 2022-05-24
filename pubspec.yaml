@@ -29,6 +29,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  syncfusion_flutter_barcodes: ^20.1.56
+  syncfusion_flutter_pdf: ^20.1.56-beta
+  path_provider: ^2.0.10
+  open_file: ^3.2.1
+  universal_html: ^2.0.8
+  screenshot: ^1.2.3
+  qr_code_scanner: ^0.7.0
   provider: ^6.0.2
   http: ^0.13.4
   shared_preferences: ^2.0.13

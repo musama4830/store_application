@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import './providers/products.dart';
 import './providers/sales.dart';
 import './providers/profit.dart';
+import './screens/qr_code_scanning_screen.dart';
 import './screens/profit_screen.dart';
 import './screens/top_sold_items_screen.dart';
 import './screens/less_stoke_items_screen.dart';
@@ -13,6 +14,7 @@ import './screens/sales_dashboard_screen.dart';
 import './screens/user_products_screen.dart';
 import './screens/edit_product_screen.dart';
 import './screens/order_return_screen.dart';
+import './screens/qr_code_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -48,13 +50,15 @@ class MyApp extends StatelessWidget {
           ),
           home: SalesDashboard(),
           routes: {
+            QrCodeScanningScreen.routeName: (ctx) => QrCodeScanningScreen(),
             ProfitScreen.routeName: (ctx) => ProfitScreen(),
             TopSoldItemsScreen.routeName: (ctx) => TopSoldItemsScreen(),
             LessStokeItemsScreen.routeName: (ctx) => LessStokeItemsScreen(),
+            SettingsScreen.routeName: (ctx) => SettingsScreen(),
             UserProductsScreen.routeName: (ctx) => UserProductsScreen(),
             EditProductScreen.routeName: (ctx) => EditProductScreen(),
-            SettingsScreen.routeName: (ctx) => SettingsScreen(),
             OrderReturnScreen.routeName: (ctx) => OrderReturnScreen(),
+            QrcodeScreen.routeName: (ctx) => QrcodeScreen(),
           }),
     );
   }

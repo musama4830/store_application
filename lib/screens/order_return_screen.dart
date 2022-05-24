@@ -14,15 +14,22 @@ class OrderReturnScreen extends StatefulWidget {
 }
 
 class _OrderReturnScreenState extends State<OrderReturnScreen> {
-  TextEditingController productIdController = TextEditingController();
-  TextEditingController productQuantityController = TextEditingController();
+  TextEditingController _productIdController = TextEditingController();
+  TextEditingController _productQuantityController = TextEditingController();
   String id = '';
   double quantity = 0;
   int profit = 0;
 
+  @override
+  void dispose() {
+    _productIdController.dispose();
+    _productQuantityController.dispose();
+    super.dispose();
+  }
+
   void returnData() {
-    id = productIdController.text;
-    quantity = double.parse(productQuantityController.text);
+    id = _productIdController.text;
+    quantity = double.parse(_productQuantityController.text);
     Product _product = Provider.of<Products>(context, listen: false).findById(id);
     Product _newItem = Product(
       id: _product.id,
@@ -30,6 +37,7 @@ class _OrderReturnScreenState extends State<OrderReturnScreen> {
       totalQuantity: quantity,
       purchasePrice: (_product.purchasePrice * (quantity)).toInt(),
       salePrice: (_product.salePrice * (quantity)).toInt(),
+      image: _product.image,
     );
     profit = (_product.salePrice * (quantity) - _product.purchasePrice * (quantity)).toInt();
 
@@ -43,8 +51,8 @@ class _OrderReturnScreenState extends State<OrderReturnScreen> {
     Provider.of<Orders>(context, listen: false).returnOrder(profit);
 
     setState(() {
-      productIdController.clear();
-      productQuantityController.clear();
+      _productIdController.clear();
+      _productQuantityController.clear();
     });
   }
 
@@ -66,7 +74,7 @@ class _OrderReturnScreenState extends State<OrderReturnScreen> {
               padding:
                   const EdgeInsets.only(top: 5, left: 5, right: 5, bottom: 10),
               child: TextField(
-                controller: productIdController,
+                controller: _productIdController,
                 autofocus: true,
                 textInputAction: TextInputAction.next,
                 decoration: const InputDecoration(
@@ -78,7 +86,7 @@ class _OrderReturnScreenState extends State<OrderReturnScreen> {
             Padding(
               padding: const EdgeInsets.only(top: 10, left: 5, right: 5),
               child: TextField(
-                controller: productQuantityController,
+                controller: _productQuantityController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Products Quantity',

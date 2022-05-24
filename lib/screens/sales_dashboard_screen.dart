@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 
-import 'profit_screen.dart';
-import 'top_sold_items_screen.dart';
-import 'less_stoke_items_screen.dart';
-import 'settings_screen.dart';
+import '../screens/profit_screen.dart';
+import '../screens/qr_code_scanning_screen.dart';
+import '../screens/top_sold_items_screen.dart';
+import '../screens/less_stoke_items_screen.dart';
+import '../screens/settings_screen.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/sold_items_list.dart';
 import '../providers/products.dart';
@@ -51,6 +52,7 @@ class _SalesDashboardState extends State<SalesDashboard> {
         totalQuantity: quantity,
         purchasePrice: (_product.purchasePrice * (quantity)).toInt(),
         salePrice: (_product.salePrice * (quantity)).toInt(),
+        image: _product.image,
       );
 
       profit = (_product.salePrice * (quantity) -
@@ -105,7 +107,9 @@ class _SalesDashboardState extends State<SalesDashboard> {
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.qr_code_scanner),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushNamed(QrCodeScanningScreen.routeName);
+            },
           ),
           PopupMenuButton(
             onSelected: (FilterOptions selectedValue) {
